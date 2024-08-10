@@ -18,7 +18,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.miikka.edistynytmobiiliuusi3005.viewmodel.LoginViewModel
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(goToCategories: () -> Unit){
 
     val loginVm: LoginViewModel = viewModel() //Create new viewModel from viewmodel/LoginViewModel
 
@@ -43,7 +43,12 @@ fun LoginScreen(){
                     Text(text = "Password")
                 }, visualTransformation = PasswordVisualTransformation())
                 Spacer(modifier = Modifier.height(16.dp))
-                Button(enabled = loginVm.loginState.value.username != "" && loginVm.loginState.value.password != "", onClick = { loginVm.login() }) {
+                Button(
+                    enabled = loginVm.loginState.value.username != "" && loginVm.loginState.value.password != "",
+                    onClick = {
+                        loginVm.login()
+                        goToCategories()
+                    }) {
                     Text(text = "Login")
                 }
             }
