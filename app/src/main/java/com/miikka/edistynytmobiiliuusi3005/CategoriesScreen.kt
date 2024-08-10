@@ -13,6 +13,23 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview
+@Composable
+fun CategoriesScreenPreview(){
+    Scaffold(topBar = {
+        TopAppBar(title = { Text(text = "Categories")}, navigationIcon = {
+            IconButton(onClick = { }) { //Create button
+                Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu") //Set button image
+            }
+        })
+    }) {
+        LazyColumn(modifier = Modifier.padding(it)){}
+    }
+}
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
